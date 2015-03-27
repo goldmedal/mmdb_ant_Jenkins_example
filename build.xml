@@ -17,6 +17,60 @@
         <pathelement location="bin"/>
         <path refid="JUnit 4.libraryclasspath"/>
     </path>
+              	
+  	<property name="cobertura.dir" value="C:/javastuff/cobertura" />
+
+  	<path id="cobertura.classpath">
+  	    <fileset dir="${cobertura.dir}">
+  	        <include name="cobertura.jar" />
+  	        <include name="lib/**/*.jar" />
+  	    </fileset>
+  	</path>
+
+  	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />  
+              	
+	<junit fork="yes" dir="${basedir}" failureProperty="test.failed">
+	    <!--
+	        Specify the name of the coverage data file to use.
+	        The value specified below is the default.
+	    -->
+	    <sysproperty key="net.sourceforge.cobertura.datafile"
+	        file="${basedir}/cobertura.ser" />
+	
+	    <!--
+	        Note the classpath order: instrumented classes are before the
+	        original (uninstrumented) classes.  This is important.
+	    -->
+	    <classpath location="${instrumented.dir}" />
+	    <classpath location="${classes.dir}" />
+	
+	    <!--
+	        The instrumented classes reference classes used by the
+	        Cobertura runtime, so Cobertura and its dependencies
+	        must be on your classpath.
+	    -->
+	    <classpath refid="cobertura_classpath" />
+	
+	    <formatter type="xml" />
+	    <test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
+	    <batchtest todir="${reports.xml.dir}" unless="testcase">
+	        <fileset dir="${src.dir}">
+	            <include name="**/*Test.java" />
+	        </fileset>
+	    </batchtest>
+	</junit>       
+		
+  	<cobertura-report format="html" destdir="${coveragereport.dir}" >
+  	    <fileset dir="${src.dir}">
+  	        <include name="**/*.java" />
+  	        <exclude name="**/*Stub.java" />
+  	    </fileset>
+  	    <fileset dir="${guisrc.dir}">
+  	        <include name="**/*.java" />
+  	        <exclude name="**/*RB.java" />
+  	    </fileset>
+  	</cobertura-report>  
+              	
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
