@@ -18,7 +18,7 @@
         <path refid="JUnit 4.libraryclasspath"/>
     </path>
               	
-  	<property name="cobertura.dir" value="C:/javastuff/cobertura" />
+  	<property name="cobertura.dir" value="D:/cobertura-2.1.1" />
 
   	<path id="cobertura.classpath">
   	    <fileset dir="${cobertura.dir}">
