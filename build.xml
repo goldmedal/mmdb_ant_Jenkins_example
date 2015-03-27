@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="cobertura.examples.basic" default="coverage" basedir=".">
-	
+
+	<description>
+    Cobertura - http://cobertura.sourceforge.net/
+    Copyright (C) 2003 jcoverage ltd.
+    Copyright (C) 2005 Mark Doliner &lt;thekingant@users.sourceforge.net&gt;
+    Copyright (C) 2006 Dan Godfrey
+    Cobertura is licensed under the GNU General Public License
+    Cobertura comes with ABSOLUTELY NO WARRANTY
+    </description>
+
 	<property file="build.properties" />
 
 	<path id="cobertura.classpath">
