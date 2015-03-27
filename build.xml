@@ -22,7 +22,7 @@
 
   	<path id="cobertura.classpath">
   	    <fileset dir="${cobertura.dir}">
-  	        <include name="cobertura.jar" />
+  	        <include name="cobertura-2.1.1.jar" />
   	        <include name="lib/**/*.jar" />
   	    </fileset>
   	</path>
