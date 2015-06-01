@@ -139,7 +139,7 @@
 	</target>
 	
 	<target name="jar">
-		<jar destfile="course.jar" basedir="classes/unitTest_example">
+		<jar destfile="build/lib/course.jar" basedir="classes/unitTest_example">
 			<manifest>
 				<attribute name="Main-class" value="Course" />
 			</manifest>
