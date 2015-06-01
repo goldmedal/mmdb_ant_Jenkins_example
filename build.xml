@@ -137,7 +137,15 @@
 			</fileset>
 		</cobertura-report>
 	</target>
-
+	
+	<target name="jar">
+		<jar destfile="course.jar" basedir="classes/unitTest_example">
+			<manifest>
+				<attribute name="Main-class" value="Course" />
+			</manifest>
+		</jar>
+	</target>
+	
 	<target name="clean" description="Remove all files created by the build/test process.">
 		<delete dir="${classes.dir}" />
 		<delete dir="${instrumented.dir}" />
@@ -146,7 +154,7 @@
 		<delete file="cobertura.ser" />
 	</target>
 
-	<target name="coverage" depends="compile,instrument,test,coverage-report,summary-coverage-report,alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
+	<target name="coverage" depends="compile,instrument,test,coverage-report,summary-coverage-report,alternate-coverage-report, jar" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
 
 
 
